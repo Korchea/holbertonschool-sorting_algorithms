@@ -2,8 +2,8 @@
 
 /**
  * swap - 'Swap two integers.'
- * @one: Is the first integer.
- * @two: Is the second integer.
+ * @list: Is the first integer.
+ * @head: Is the head of the list.
  */
 
 void swap(listint_t **list, listint_t **head)
