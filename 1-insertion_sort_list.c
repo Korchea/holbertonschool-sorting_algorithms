@@ -42,13 +42,14 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *aux = (*list);
 
-	while (aux->next != NULL)
-	{
-		aux = aux->next;
-		while (aux->prev != NULL && aux->n < aux->prev->n)
+	if ((*list) != NULL)
+		while (aux->next != NULL)
 		{
-			swap(&aux, &(*list));
-			print_list((*list));
+			aux = aux->next;
+			while (aux->prev != NULL && aux->n < aux->prev->n)
+			{
+				swap(&aux, &(*list));
+				print_list((*list));
+			}
 		}
-	}
 }
