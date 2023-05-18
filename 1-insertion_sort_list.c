@@ -23,7 +23,8 @@ void swap(listint_t **list, listint_t **head)
 	else
 	{
 		aux->next = (*list)->next;
-		(*list)->next->prev = aux;
+		if ((*list)->next != NULL)
+			(*list)->next->prev = aux;
 		(*list)->next = aux;
 		(*list)->prev = aux->prev;
 		aux->prev = (*list);
