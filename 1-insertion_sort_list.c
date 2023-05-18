@@ -6,20 +6,29 @@
  * @two: Is the second integer.
  */
 
-void swap(listint_t **list)
+void swap(listint_t **list, listint_t **head)
 {
 	listint_t *aux = (*list)->prev;
 
-	aux->next = (*list)->next;
 	if (aux->prev != NULL)
 	{
+		aux->next = (*list)->next;
 		aux->prev->next = (*list);
+		if ((*list)->next != NULL)
+			(*list)->next->prev = aux;
+		(*list)->next = aux;
 		(*list)->prev = aux->prev;
+		aux->prev = (*list);
 	}
-			printf("Estoy parado en %d\n", (*list)->n);
-	(*list)->next->prev = aux;
-	(*list)->next = aux;
-	aux->prev = (*list);
+	else
+	{
+		aux->next = (*list)->next;
+		(*list)->next->prev = aux;
+		(*list)->next = aux;
+		(*list)->prev = aux->prev;
+		aux->prev = (*list);
+		(*head) = (*list);
+	}
 }
 
 /**
@@ -37,7 +46,7 @@ void insertion_sort_list(listint_t **list)
 		aux = aux->next;
 		while (aux->prev != NULL && aux->n < aux->prev->n)
 		{
-			swap(&aux);
+			swap(&aux, &(*list));
 			print_list((*list));
 		}
 	}
