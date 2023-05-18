@@ -40,9 +40,11 @@ void swap(listint_t **list, listint_t **head)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *aux = (*list);
+	listint_t *aux = NULL;
 
-	if ((*list) != NULL)
+	if (list != NULL)
+	{
+		aux = (*list);
 		while (aux->next != NULL)
 		{
 			aux = aux->next;
@@ -52,4 +54,5 @@ void insertion_sort_list(listint_t **list)
 				print_list((*list));
 			}
 		}
+	}
 }
